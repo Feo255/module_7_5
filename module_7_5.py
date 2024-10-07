@@ -5,7 +5,7 @@ directoty = os.getcwd()
 
 for root, dirs, files in os.walk(directoty):
   for file in files:
-    filepath = os.getcwd()
+    filepath = os.path.join(directoty, file)
     filetime = os.stat(file).st_atime
 
     formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
