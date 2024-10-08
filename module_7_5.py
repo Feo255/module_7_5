@@ -1,15 +1,15 @@
 import os
 import time
-os.chdir(r'C:\Users\synesis1\PycharmProjects\pythonProject1\.venv\module_5_hard')
-directoty = os.getcwd()
+
+directoty = '.'
 
 for root, dirs, files in os.walk(directoty):
   for file in files:
-    filepath = os.path.join(directoty, file)
-    filetime = os.stat(file).st_atime
+    filepath = os.path.join(root, file)
+    filetime = os.path.getmtime(filepath)
 
     formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
-    filesize = os.stat(file).st_size
-    parent_dir = os.path.dirname(directoty)
+    filesize = os.path.getsize(filepath)
+    parent_dir = os.path.dirname(filepath)
 
     print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
